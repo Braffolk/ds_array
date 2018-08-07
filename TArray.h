@@ -98,15 +98,8 @@ class TArray_type : public TArray {
 	}
 
 	inline int find_index( double val, int offset ) {
-		int index = -1;
-		T find = ( T ) val;
-		for( int n = offset; n < this->size; n++ ) {
-			if( this->data[ n ] == find ) {
-				index = n;
-				break;
-			}
-		}
-		return index;
+		int found = std::find( this->data + offset, this->data + this->size, ( T ) val ) - this->data;
+		return ( found != this->size ) ? ( found ) : ( -1 );
 	}
 
 	inline unsigned int write_compressed( char* buffer, unsigned int offset ) {
