@@ -1,2 +1,4 @@
 # ds_array
-A DLL for Game Maker
+Ds_array is a DLL replacement for Game Maker's ds_grids. It supports data types: unsigned and signed chars, shorts, ints, longs, floats and doubles. With most compiler optimisations enabled, it outperforms ds_grids on the regular windows export. On YYC it only outperforms ds_grids in case the code is injected via the YYGML.h header rather than inserted as a DLL, though ds_array_set_region and other region related functionalities always vastly outperform the same ds_grid functionalities.
+
+The implementation does not require the type to be inserted at every access, the type must be set only at the constructor. Ds_arrays support fast array -> buffer conversion and realtime compression for multiplayer. In order to allow large data modification, the code also has an active ds_array which can be set similar to the surface_set_target() functionalities. This removes the necessity for a ds_array index lookup at each access.
